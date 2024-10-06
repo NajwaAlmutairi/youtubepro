@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
     const [fullSearch, setFullSearch] = useState(false);
     const navigate = useNavigate();
+    const [searchedv, setSearchedv] = useState(); 
 
     useEffect(() => {
         const handleResize = () => {
@@ -28,6 +29,11 @@ function Navbar() {
         };
     }, []);
 
+    const handleSearch = () => { 
+        if (searchedv) { 
+          navigate(`/search/${searchedv}`); 
+        } 
+      };
 
 
     return (
@@ -39,7 +45,7 @@ function Navbar() {
                             <Sidebar />
                         </div>
 
-                        <Link to={'/'}>
+                        <Link to={'/home'}>
                             <img src={logo} alt="logo" className='h-6' />
                         </Link>
                     </div>
@@ -48,11 +54,13 @@ function Navbar() {
                             <div className="flex flex-grow max-w-[48vw]">
                                 <input
                                     type="text"
+                                    value={searchedv}
                                     placeholder="بحث"
+                                    onChange={(e) => setSearchedv(e.target.value)}
                                     className="input join-item rounded-r-full text-[1rem] h-11 
                                     w-[48vw]  outline-none focus:border-blue-400 shadow-inner shadow-neutral-200 border border-neutral-400 focus:outline-none"
                                 />
-                                <button className="btn join-item rounded-l-full min-h-9 h-11  border border-neutral-400 bg-neutral-100 hover:bg-neutral-200">
+                                <button onClick={handleSearch} className="btn join-item rounded-l-full min-h-9 h-11  border border-neutral-400 bg-neutral-100 hover:bg-neutral-200">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
                                         <path d="M16.296 16.996a8 8 0 11.707-.708l3.909 3.91-.707.707-3.909-3.909zM18 11a7 7 0 00-14 0 7 7 0 1014 0z"></path>
                                     </svg>
@@ -90,15 +98,12 @@ function Navbar() {
                                 <span className="badge badge-xs bg-[#c1121f] indicator-item"></span>
                             </div>
                         </button>
-                        {/* <button className="btn btn-circle min-h-10 w-10 h-10 bg-neutral-200 hover:bg-neutral-300">
-                            <FontAwesomeIcon icon={faUser} />
-                        </button> */}
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn m-1  btn-circle min-h-10 w-10 h-10 bg-neutral-200 hover:bg-neutral-300">
                                 <FontAwesomeIcon icon={faUser} />
                             </div>
                             <ul tabIndex={0} className="dropdown-content bg-base-100 rounded-box z-[1] w-36 p-2 py-4 px-6 shadow">
-                                <li><a className='text-red-500 text-lg w-full hover:underline cursor-pointer' onClick={()=>{localStorage.removeItem('username'); navigate("/");}} >Logout</a></li>
+                                <li><a className='text-red-500 text-lg w-full hover:underline cursor-pointer' onClick={()=>{localStorage.removeItem('username'); navigate("/login");}} >Logout</a></li>
                             </ul>
                         </div>
 
@@ -118,11 +123,13 @@ function Navbar() {
                         <div className="join">
                             <input
                                 type="text"
+                                value={searchedv}
                                 placeholder="بحث"
+                                onChange={(e) => setSearchedv(e.target.value)}
                                 className="input join-item rounded-r-full text-lg
                                     w-[64vw] h-10 outline-none focus:border-blue-400 border border-neutral-400 focus:outline-none"
                             />
-                            <button className="btn join-item rounded-l-full min-h-10 h-10 border border-neutral-400 bg-neutral-100 hover:bg-neutral-200">
+                            <button onClick={handleSearch} className="btn join-item rounded-l-full min-h-10 h-10 border border-neutral-400 bg-neutral-100 hover:bg-neutral-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
                                     <path d="M16.296 16.996a8 8 0 11.707-.708l3.909 3.91-.707.707-3.909-3.909zM18 11a7 7 0 00-14 0 7 7 0 1014 0z"></path>
                                 </svg>

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
-    const apiKey = "AIzaSyAnMQaVLL4Wk7hXoMcQd6T61ibnp3sFhYo";
+    const apiKey = "AIzaSyDZgtt87cHhpV_RaMdE1HSSAF78eUTv1Go";
     const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=SA&videoCategoryId=0&key=${apiKey}`
     const [data, setData] = useState([])
     const [datastate, setDatastate] = useState(false);

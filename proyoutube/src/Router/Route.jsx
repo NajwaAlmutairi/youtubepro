@@ -6,6 +6,7 @@ import SingleVideo from "../pages/SingleVideo.jsx";
 import Home from "../pages/Home.jsx";
 import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
+import Search from "../pages/Search.jsx";
 
 
 const router = createBrowserRouter([
@@ -33,5 +34,10 @@ const router = createBrowserRouter([
     path: "/watch/:catId/:id",
     element: <SingleVideo />,
   },
+  {
+    path: "/search/:sv",
+    element: <Search />,
+  },
+  
 ]);
 export default router;

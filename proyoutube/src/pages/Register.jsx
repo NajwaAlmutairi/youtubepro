@@ -69,7 +69,7 @@ function Register() {
     return (
         <>
             <div className='flex items-center justify-center h-screen bg-gray-100'>
-                <div className='w-96 bg-white rounded-lg p-4'>
+                <div className='w-96 bg-white rounded-lg p-4 max-sm:w-80'>
                     <div className='flex justify-center items-center mb-3'>
                         <img src={logo} alt="logo" className='h-6' />
                     </div>
