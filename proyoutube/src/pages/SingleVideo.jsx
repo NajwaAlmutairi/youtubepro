@@ -531,7 +531,7 @@ function SingleVideo() {
                                                         className='btn btn-ghost btn-circle text-sm font-normal  text-black min-h-7 w-12 h-9 hover:bg-neutral-200'>
                                                         إلغاء
                                                     </button>
-                                                    <button className={`btn btn-circle ${comment ? '' : 'btn-disabled'} bg-neutral-200 text-sm font-normal  text-black min-h-7 w-14 h-9`}>
+                                                    <button onClick={handleUserComment} className={`btn btn-circle ${comment ? '' : 'btn-disabled'} bg-neutral-200 text-sm font-normal  text-black min-h-7 w-14 h-9`}>
                                                         تعليق
                                                     </button>
                                                 </div>

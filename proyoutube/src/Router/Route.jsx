@@ -7,13 +7,14 @@ import Home from "../pages/Home.jsx";
 import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
 import Search from "../pages/Search.jsx";
+import ErrorPage from "../pages/Error-page.jsx";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-
+    errorElement: <ErrorPage />,
   },
   {
     path: "/home",
