@@ -5,12 +5,17 @@ import Navbar from '../component/Navbar';
 import moment from 'moment';
 import 'moment/locale/ar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function Home() {
     const apiKey = "AIzaSyAnMQaVLL4Wk7hXoMcQd6T61ibnp3sFhYo";
     const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=SA&videoCategoryId=0&key=${apiKey}`
     const [data, setData] = useState([])
-    const [datastate,setDatastate]=useState(false);
+    const [datastate, setDatastate] = useState(false);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         axios.get(apiUrl)
@@ -24,6 +29,11 @@ function Home() {
             })
     }, [])
 
+    useEffect(() => {
+        if (!localStorage.getItem('username')) {
+            navigate("/");
+        }
+    }, [navigate]);
 
     const viewsValue = (number) => {
         if (number >= 1000000) {
@@ -70,7 +80,7 @@ function Home() {
                         })}
                     </div>
                 </div>
-                {!datastate && 
+                {!datastate &&
                     <h1 className='text-center pt-60'> جاري التحميل ..... </h1>
                 }
             </div>

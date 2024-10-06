@@ -6,10 +6,12 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Navbar() {
-    const [fullSearch, setFullSearch] = useState(false)
+    const [fullSearch, setFullSearch] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleResize = () => {
@@ -88,9 +90,19 @@ function Navbar() {
                                 <span className="badge badge-xs bg-[#c1121f] indicator-item"></span>
                             </div>
                         </button>
-                        <button className="btn btn-circle min-h-10 w-10 h-10 bg-neutral-200 hover:bg-neutral-300">
+                        {/* <button className="btn btn-circle min-h-10 w-10 h-10 bg-neutral-200 hover:bg-neutral-300">
                             <FontAwesomeIcon icon={faUser} />
-                        </button>
+                        </button> */}
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn m-1  btn-circle min-h-10 w-10 h-10 bg-neutral-200 hover:bg-neutral-300">
+                                <FontAwesomeIcon icon={faUser} />
+                            </div>
+                            <ul tabIndex={0} className="dropdown-content bg-base-100 rounded-box z-[1] w-36 p-2 py-4 px-6 shadow">
+                                <li><a className='text-red-500 text-lg w-full hover:underline cursor-pointer' onClick={()=>{localStorage.removeItem('username'); navigate("/");}} >Logout</a></li>
+                            </ul>
+                        </div>
+
+
                     </div>
                 </div>
             }
